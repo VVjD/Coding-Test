@@ -14,11 +14,11 @@ public class SuffixArray {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
 		try {
-			String s = reader.readLine();
+			String S = reader.readLine();
 			ArrayList<String> word = new ArrayList<String>(); 
 
-			for (int i = 0; i < s.length(); i++) {
-				String temp = s.substring(i);
+			for (int i = 0; i < S.length(); i++) {
+				String temp = S.substring(i);
 				
 				word.add(temp); // 잘라서 담기
 			}
