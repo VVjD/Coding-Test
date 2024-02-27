@@ -31,23 +31,23 @@ public class RotateArray {
 			for (int j = 0; j < count; j++) { //모든 라인 돌기
 				int temp = arr[j][j]; //기준점
 
-				//오른쪽으로 하나씩 이동
+				//왼쪽으로 하나씩 이동
 				for (int k = j + 1; k < M - j; k++) {
 					arr[j][k - 1] = arr[j][k];
 				}
 
-				//아래로 하나씩 이동
+				//위로 하나씩 이동
 				for (int k = j + 1; k < N - j; k++) {
 					arr[k - 1][M - 1 - j] = arr[k][M - 1 - j];
 				}
 
-				//왼쪽으로 하나씩 이동
+				//오른쪽으로 하나씩 이동
 				for (int k = M - 2 - j; k >= j; k--) {
 					arr[N - 1 - j][k + 1] = arr[N - 1 - j][k];
 				}
 				
 
-				//위로 하나씩 이동
+				//아래로 하나씩 이동
 				for (int k = N - 2 - j; k >= j; k--) {
 					arr[k + 1][j] = arr[k][j];
 				}
