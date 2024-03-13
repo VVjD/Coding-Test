@@ -66,12 +66,12 @@ public class MemorizeEnglishWords {
 			        }
 			    } else {
 			        // 값이 다르면 횟수를 기준으로 정렬
-			        return value2.compareTo(value1); // 내림차순
+			        return value2.compareTo(value1); // compareTo() 메서드는 이진 관계(binary relationship)를 기반으로 합니다. 호출된 객체가 비교 대상 객체보다 작으면 음수를, 같으면 0을, 크면 양수를 반환
 			    }
 			});
 			
 			for (String key : keys) {
-				builder.append(key).append("\n");
+				builder.append(key).append("\n"); //StringBuilder를 사용하여 문자열을 누적한 후 한 번에 출력하는 것이 여러 번의 출력보다 성능면에서 더 효율적일 수 있다. 또한 두 번째 방법(바로 출력하는 것)은 각 요소마다 개행 문자를 출력하므로, 출력 버퍼를 더 자주 비워야 하므로 약간의 성능 저하가 있을 수 있다.
 			}
 		
 			System.out.println(builder);	
