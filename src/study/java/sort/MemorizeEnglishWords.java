@@ -48,7 +48,7 @@ public class MemorizeEnglishWords {
 			
 			//Collections.sort(keys, (o1, o2) -> (map.get(o2).compareTo(map.get(o1)))); //내림차순 정렬			
 			//앞이 작으면 음수, 뒤가 작으면 양수, 값이 같으면 0을 반환
-			Collections.sort(keys, (o1, o2) -> {
+			Collections.sort(keys, (o1, o2) -> { //람다 표현식 : 자바의 메소드를 간결한 함수 식으로 표현한 것
 			    Integer value1 = map.get(o1);
 			    Integer value2 = map.get(o2);
 			    
