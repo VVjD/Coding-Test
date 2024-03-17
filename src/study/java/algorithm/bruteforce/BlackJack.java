@@ -41,6 +41,8 @@ public class BlackJack {
 		}
 	} // main
 
+	
+	
 	private static int blackJack(int M, ArrayList<Integer> list) {
 		int sum = 0;
 		int temp = 0;
