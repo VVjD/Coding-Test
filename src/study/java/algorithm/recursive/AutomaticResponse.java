@@ -9,17 +9,17 @@ import java.io.OutputStreamWriter;
 //백준, 17478번 - 재귀함수가 뭔가요?
 public class AutomaticResponse {
 	static String line = "";
+	static BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int N = Integer.parseInt(reader.readLine());
 		String line = "";
 
 		writer.append("어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.").append("\n");
 
-		getResponse(writer, N);
+		getResponse(N);
 
 		writer.flush();
 
@@ -28,7 +28,7 @@ public class AutomaticResponse {
 
 	} // main
 
-	private static void getResponse(BufferedWriter writer, int N) throws IOException {
+	private static void getResponse(int N) throws IOException {
 		String underLine = line; // 처음에 이렇게 따로 저장을 안 했더니 밑줄 개수가 줄지 않았다.
 
 		writer.append(underLine + "\"재귀함수가 뭔가요?\"\n");
@@ -44,9 +44,9 @@ public class AutomaticResponse {
 		writer.append(underLine + "마을 사람들은 모두 그 선인에게 수많은 질문을 했고, 모두 지혜롭게 대답해 주었지.\n");
 		writer.append(underLine + "그의 답은 대부분 옳았다고 하네. 그런데 어느 날, 그 선인에게 한 선비가 찾아와서 물었어.\"\n");
 
-		line += "___";
+		line += "____"; //한 바퀴 돌 때마다 밑줄 개수 증가.
 
-		getResponse(writer, N - 1);
+		getResponse(N - 1);
 
 		writer.append(underLine + "라고 답변하였지.\n");
 	}

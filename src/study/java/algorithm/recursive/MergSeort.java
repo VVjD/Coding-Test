@@ -12,8 +12,8 @@ public class MergSeort {
 	static int[] A;
 	static int[] temp;
 	static int count = 0;
-	static int K = 0;
-	static int result = -1;
+	static int K = 0; //저장 횟수
+	static int result = -1; //결과
 	
 	public static void main(String[] args) throws IOException {
 		BufferedWriter writer =  new BufferedWriter(new OutputStreamWriter(System.out));
@@ -39,10 +39,12 @@ public class MergSeort {
 		writer.append(builder.toString());
 		
 		writer.close();
-		reader.close();
-			
-	}
+		reader.close();	
+	} // main
+	
+	
 
+	//p: 시작, q: 중간, r: 마지막
 	private static void mergeSort(int[] A, int p, int r) { //배열 A를 오름차순으로 정렬한다.
 		if ( p < r) {
 			int q = (p + r) / 2; //q는 p, r의 중간 지점
@@ -51,9 +53,10 @@ public class MergSeort {
 			mergeSort(A, q + 1, r); //후반부 정렬
 			merge(A, p, q, r); //병합
 		}
-		
-	}
+	} // mergeSort
 
+	
+	
 	private static void merge(int[] A, int p, int q, int r) {
 		
 		int i = p; //시작 인덱스
@@ -69,17 +72,18 @@ public class MergSeort {
 		}
 		
 		//남은 경우
-		while(i <= q) {
+		while(i <= q) { //왼쪽 배열이 남은 경우
 			temp[t++] = A[i++];
 		}
 		
-		while(j <= r) {
+		while(j <= r) { //오른쪽 배열이 남은 경우
 			temp[t++] = A[j++];
 		}
 		
 		i = p;
 		t = 0;
-		while(i <= r) {
+		
+		while(i <= r) { //결과를 배열 A에 저장
 			count++;
 			
 			if (count == K) {
@@ -89,7 +93,5 @@ public class MergSeort {
 			
 			A[i++] = temp[t++];
 		}
-		
-		
-	}
+	} //merge
 }
