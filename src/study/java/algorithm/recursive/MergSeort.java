@@ -14,7 +14,7 @@ public class MergSeort {
 	static int[] temp;
 	static int count = 0;
 	static int K = 0; //저장 횟수
-	static int result = -1; //결과
+	static int result = -1; //저장 횟수가 K 보다 작으면 -1을 출력하기 때문에 -1로 초기화
 	
 	public static void main(String[] args) throws IOException {
 		BufferedWriter writer =  new BufferedWriter(new OutputStreamWriter(System.out));
@@ -47,39 +47,8 @@ public class MergSeort {
 
 	//p: 시작, q: 중간, r: 마지막
 	private static void mergeSort(int[] A, int p, int r) { //배열 A를 오름차순으로 정렬한다.
-		if ( p < r) {
+		if (p < r) { //배열의 길이가 0보다 큰 경우
 			int q = (p + r) / 2; //q는 p, r의 중간 지점
-<<<<<<< HEAD
-			/*
-			
-				p = 0, r = 4
-				q = 2
-				
-				p = 0, r = 2
-				q = 1
-				
-				p = 0, r = 1
-				q = 0
-				
-				---
-				
-				p = 1, r = 1
-				
-				merge
-				
-				p = 2, r = 2
-				
-				merge
-				
-				p = 3, r = 4
-				q = 3	
-				
-				merge
-				
-			*/
-=======
-//			System.out.println("q:" + q);
->>>>>>> b2ee3df552a8cd9909cd23fac5e15cc784715ec6
 			
 			mergeSort(A, p, q); //전반부 정렬
 			mergeSort(A, q + 1, r); //후반부 정렬
@@ -91,11 +60,11 @@ public class MergSeort {
 	
 	private static void merge(int[] A, int p, int q, int r) {
 		
-		int i = p; //p: 시작
-		int j = q + 1; //q: 중간
+		int i = p; //p: 첫번째 배열의 시작
+		int j = q + 1; //q: 중간 -> q + 1: 두번째 배열의 시작
 		int t = 0;
 		
-		while(i <= q && j <= r) { //시작이 중간보다 작고, 중간이 마지막보다 작은 경우
+		while(i <= q && j <= r) { //시작이 중간보다 작고, 그 다음 시작이 마지막보다 작은 경우 > 아직 정렬되지 않은 경우
 			if(A[i] < A[j]) {
 				temp[t++] = A[i++];
 			} else {
@@ -126,4 +95,33 @@ public class MergSeort {
 			A[i++] = temp[t++];
 		}
 	} //merge
+	
+	/*
+	
+	전반부 정렬
+	p = 0, r = 4
+	q = 2
+	
+	p = 0, r = 2
+	q = 1
+	
+	p = 0, r = 1
+	q = 0
+	
+	p = 0, q = 0
+	
+	---
+	후반부 정렬
+	p = 1, r = 1
+	merge(p = 0, q = 0, r = 1) 
+
+	p = 2, r = 2
+	merge
+	
+	p = 3, r = 4
+	q = 3	
+	
+	merge
+	
+*/
 }
