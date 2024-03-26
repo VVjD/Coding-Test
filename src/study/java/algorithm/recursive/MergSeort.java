@@ -49,6 +49,7 @@ public class MergSeort {
 	private static void mergeSort(int[] A, int p, int r) { //배열 A를 오름차순으로 정렬한다.
 		if ( p < r) {
 			int q = (p + r) / 2; //q는 p, r의 중간 지점
+<<<<<<< HEAD
 			/*
 			
 				p = 0, r = 4
@@ -76,6 +77,9 @@ public class MergSeort {
 				merge
 				
 			*/
+=======
+//			System.out.println("q:" + q);
+>>>>>>> b2ee3df552a8cd9909cd23fac5e15cc784715ec6
 			
 			mergeSort(A, p, q); //전반부 정렬
 			mergeSort(A, q + 1, r); //후반부 정렬
