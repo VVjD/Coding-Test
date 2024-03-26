@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 //백준, 24060번 - 알고리즘 수업 - 병합 정렬 1
+//합병 정렬: 하나의 리스트를 두 개의 균등한 크기의 리스트로 분할하고 부분 리스트를 합치면서 정렬하여 최종적으로 전체가 정렬되게 하는 방법
 public class MergSeort {
 	static int[] A;
 	static int[] temp;
@@ -33,9 +34,9 @@ public class MergSeort {
 			A[i] = Integer.parseInt(tokenizer.nextToken());
 		}
 		
-		mergeSort(A, 0, N - 1);
+		mergeSort(A, 0, N - 1); //처음 시작 0, 마지막 인덱스 N - 1
 		
-		builder.append(result); //처음 시작 0, 마지막 인덱스 N - 1
+		builder.append(result);
 		writer.append(builder.toString());
 		
 		writer.close();
@@ -48,6 +49,33 @@ public class MergSeort {
 	private static void mergeSort(int[] A, int p, int r) { //배열 A를 오름차순으로 정렬한다.
 		if ( p < r) {
 			int q = (p + r) / 2; //q는 p, r의 중간 지점
+			/*
+			
+				p = 0, r = 4
+				q = 2
+				
+				p = 0, r = 2
+				q = 1
+				
+				p = 0, r = 1
+				q = 0
+				
+				---
+				
+				p = 1, r = 1
+				
+				merge
+				
+				p = 2, r = 2
+				
+				merge
+				
+				p = 3, r = 4
+				q = 3	
+				
+				merge
+				
+			*/
 			
 			mergeSort(A, p, q); //전반부 정렬
 			mergeSort(A, q + 1, r); //후반부 정렬
@@ -59,7 +87,7 @@ public class MergSeort {
 	
 	private static void merge(int[] A, int p, int q, int r) {
 		
-		int i = p; //시작 인덱스
+		int i = p; //p: 시작
 		int j = q + 1; //q: 중간
 		int t = 0;
 		
