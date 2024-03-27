@@ -15,7 +15,6 @@ public class AutomaticResponse {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		int N = Integer.parseInt(reader.readLine());
-		String line = "";
 
 		writer.append("어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.").append("\n");
 

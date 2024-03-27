@@ -45,17 +45,23 @@ public class MergSeort {
 	
 	
 
-	//p: 시작, q: 중간, r: 마지막
+	
+	/**
+	 * @param A 배열
+	 * @param p 시작
+	 * @param r 마지막
+	 */
 	private static void mergeSort(int[] A, int p, int r) { //배열 A를 오름차순으로 정렬한다.
 		if (p < r) { //배열의 길이가 0보다 큰 경우
-			int q = (p + r) / 2; //q는 p, r의 중간 지점
+			int q = (p + r) / 2; //q: p, r의 중간
 			
 			mergeSort(A, p, q); //전반부 정렬
 			mergeSort(A, q + 1, r); //후반부 정렬
-			merge(A, p, q, r); //병합
+			merge(A, p, q, r); //병합       
 		}
 	} // mergeSort
 
+	
 	
 	
 	private static void merge(int[] A, int p, int q, int r) {
@@ -64,7 +70,7 @@ public class MergSeort {
 		int j = q + 1; //q: 중간 -> q + 1: 두번째 배열의 시작
 		int t = 0;
 		
-		while(i <= q && j <= r) { //시작이 중간보다 작고, 그 다음 시작이 마지막보다 작은 경우 > 아직 정렬되지 않은 경우
+		while(i <= q && j <= r) { //시작이 중간보다 작고, 그 다음 시작이 마지막보다 작은 경우 > 두 배열을 병합할 때 길이가 넘어가기 전까지 반복
 			if(A[i] < A[j]) {
 				temp[t++] = A[i++];
 			} else {
@@ -81,7 +87,7 @@ public class MergSeort {
 			temp[t++] = A[j++];
 		}
 		
-		i = p;
+		i = p; //정렬된 배열을 A에 저장하기 위해서 각각 초기화한다.
 		t = 0;
 		
 		while(i <= r) { //결과를 배열 A에 저장
@@ -96,32 +102,51 @@ public class MergSeort {
 		}
 	} //merge
 	
+	
+	
 	/*
 	
 	전반부 정렬
+	4 5 1 3 2
 	p = 0, r = 4
 	q = 2
-	
+
+	mergeSort(A, 0, 2) -> 4 5 1
 	p = 0, r = 2
 	q = 1
 	
+	mergeSort(A, 0, 1) -> 4 5
 	p = 0, r = 1
 	q = 0
 	
+	mergeSort(A, 0, 0) -> 4
 	p = 0, q = 0
 	
 	---
 	후반부 정렬
+	mergeSort(A, 1, 1) -> 5
 	p = 1, r = 1
-	merge(p = 0, q = 0, r = 1) 
+	merge(p = 0, q = 0, r = 1)
+	i = 0, j = 1, t = 0 
+	4, 5
 
+	mergeSort(A, 2, 2) -> 1
 	p = 2, r = 2
-	merge
-	
+	merge(p = 0, q = 1, r = 2)
+	i = 0, j = 2, t = 0
+	1, 4, 5
+
+	mergeSort(A, 3, 4) -> 3 2
 	p = 3, r = 4
 	q = 3	
-	
-	merge
+	mergeSort(A, 3, 3) -> X
+	mergeSort(A, 4, 4) -> X
+	merge(p = 3, q = 3, r = 4)
+	i = 3, j = 4, t = 0
+	2, 3
+
+	merge(p = 0, q = 2, r = 4)
+	i= 0, j = 3, t = 0
 	
 */
 }
