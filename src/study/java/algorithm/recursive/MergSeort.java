@@ -99,6 +99,7 @@ public class MergSeort {
 			}
 			
 			A[i++] = temp[t++];
+			
 		}
 	} //merge
 	
